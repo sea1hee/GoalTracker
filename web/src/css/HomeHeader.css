@@ -1,0 +1,19 @@
+.HomeHeader {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date {
+  display: flex;
+}
+
+.date .title {
+  padding: 0px 10px;
+  font-size: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

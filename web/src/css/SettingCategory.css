@@ -1,0 +1,28 @@
+.SettingCategory {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+.setting_category_list_wrapper {
+    margin: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    
+    overflow-y: auto;
+    -ms-overflow-style: none;  /*IE, Edge*/
+    scrollbar-width: none; /*Firefox*/
+}
+
+.setting_btn_add_category {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    background-color: yellow;
+
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}

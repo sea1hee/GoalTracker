@@ -1,0 +1,99 @@
+/*
+.Button {
+  background-color: lightgray;
+  outline: none;
+
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+
+  border-style: none;
+  cursor: pointer;
+  background-color: rgb(230,230,230);
+  border-radius: 50px;
+  
+}
+*/
+
+/* 3D Button */
+.Button {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+  position: relative;
+  display: inline-block;
+  color: white;
+  border-radius: 6px;
+  text-align: center;
+  transition: top .01s linear;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+}
+.Button:active {
+  top: 3px;
+}
+.Button_CATEGORY:hover    {background-color: #e74c3c;}
+
+.Button_SETTINGS {
+  width: 60px;
+  color: white;
+  background-color: gray;
+  margin: 0px;
+}
+
+.Button_PREV {
+  font-weight: bold;
+  color: black;
+  background-color: white;
+}
+
+.Button_NEXT {
+  font-weight: bold;
+  color: black;
+  background-color: white;
+}
+/*
+.Button_CATEGORY {
+  width: 80px;
+  color: white;
+  background-color: rgb(230,230,230);
+  border-radius: 50px;
+}
+
+.Button_CATEGORYSELECTED {
+  width: 80px;
+  color: white;
+  background-color: purple;
+  border-radius: 50px;
+}
+*/
+.Button_ADDCATEGORY{
+  width: 50px;
+  color: white;
+  background-color: rgb(230,230,230);
+}
+
+/* 3D button colors */
+.Button_CATEGORYSELECTED {
+  width: 80px;
+  background-color: #e74c3c;
+  box-shadow: 0 0 0 1px #c63702 inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 2px 0 0 #C24032,
+        0 2px 0 1px rgba(0,0,0,0.4),
+        2px 2px 2px 1px rgba(0,0,0,0.5);
+}
+.Button_CATEGORYSELECTED:active {
+  box-shadow: 0 0 0 1px #c63702 inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 0 0 1px rgba(0,0,0,0.4);
+}
+
+.Button_CATEGORY {
+  width: 80px;
+  background-color: #8a0173;
+  box-shadow: 0 0 0 1px #680163 inset,
+        0 0 0 2px rgba(255,255,255,0.15) inset,
+        0 2px 0 0 #8a0173,
+        0 2px 0 1px rgba(0,0,0,0.4),
+        2px 2px 2px 1px rgba(0,0,0,0.5);
+}

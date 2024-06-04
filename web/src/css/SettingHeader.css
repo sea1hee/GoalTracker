@@ -1,0 +1,27 @@
+
+.SettingHeader {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 10px;
+}
+
+.title {
+  padding: 0px 10px;
+  font-size: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back {
+    width: 40px;
+    height: 40px;
+    margin: 20px;
+    font-weight: bold;
+    color: black;
+    background-color: yellow;
+}

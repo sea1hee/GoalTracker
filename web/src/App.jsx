@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import Setting from "./pages/Setting";
 import NotFound from "./pages/NotFound";
 import SettingCategory from "./components/SettingCategory"
-import { createContext, useReducer, useEffect } from "react";
+import { createContext, useReducer, useEffect, useState } from "react";
 import {Routes, Route} from 'react-router-dom';
 
 let mockDataCategory = [{
@@ -58,8 +58,15 @@ function App() {
   const [isChecked, isCheckedDispatch] = useReducer(reducer_arr, mockDataIsCheck);
   const [cIndex, cIndexDispatch] = useReducer(reducer_int, 1);
 
+  const [countCategory, setCountCategory] = useState(0);
+  const [countIsChecked, setCountIsChecked] = useState(0);
+
+
   //category
   useEffect(() => {
+
+    window.BRIDGE.logAndroid("rerender category");
+
     const loadCategoryFromAndroid = async (event) => {
       var alterData = [];
 
@@ -80,20 +87,28 @@ function App() {
         data: alterData
       });
 
+      if(countCategory != alterData.length){
+        setCountCategory(alterData.length);
+      };
+
       window.BRIDGE.logAndroid("alterData: " +alterData);
     }
 
     window.addEventListener('loadCategoryToWeb', loadCategoryFromAndroid);
+    
     if (window.BRIDGE) {
         window.BRIDGE.loadCategory();
     }
     return () => {
         window.removeEventListener('loadCategoryToWeb', loadCategoryFromAndroid);
     };
-}, [category]);
+}, [countCategory]);
 
   //ischecked
   useEffect(() => {
+    
+    window.BRIDGE.logAndroid("rerender IsChecked");
+
     const loadChecklistFromAndroid = async (event) => {
       var alterData = [];
 
@@ -109,8 +124,12 @@ function App() {
         type: "ALTER",
         data: alterData
       });
-    }
 
+      if(countIsChecked != alterData.length){
+        setCountIsChecked(alterData.length);
+      };
+
+    }
     window.addEventListener('loadCheckListToWeb', loadChecklistFromAndroid);
     if (window.BRIDGE) {
         window.BRIDGE.loadCheckList();
@@ -118,7 +137,7 @@ function App() {
     return () => {
         window.removeEventListener('loadCheckListToWeb', loadChecklistFromAndroid);
     };
-  }, [isChecked]);
+  }, [countIsChecked]);
 
   const onCreateCategory = (name) => {
     
@@ -126,17 +145,20 @@ function App() {
       window.BRIDGE.addCategoryData(dateToString(new Date()), name);
     }
 
-    window.BRIDGE.loadCategory();
+    window.BRIDGE.logAndroid("delete complete!");
+    setCountCategory(category.length+1);
+
+    //window.BRIDGE.loadCategory();
     //onUpdateCIndex(category[-1].id);
   };
 
   const onDeleteCategory = (id) => {
-
     if (window.BRIDGE) {
       window.BRIDGE.deleteCategoryData(id);
     }
 
-    window.BRIDGE.loadCategory();
+    setCountCategory(countCategory-1);
+    //window.BRIDGE.loadCategory();
     window.BRIDGE.logAndroid("delete complete!");
 
     onUpdateCIndex(1);
@@ -156,16 +178,15 @@ function App() {
     if (window.BRIDGE) {
       window.BRIDGE.addIsCheckData(dateToString(date), categoryId);
     }
-
-    window.BRIDGE.loadCheckList()
+    setCountIsChecked(countIsChecked+1);
+    //window.BRIDGE.loadCheckList()
   };
 
   const onDeleteIsChecked = (id) => {
-    isCheckedDispatch({
-      type: "DELETE",
-      id,
-    });
-    window.BRIDGE.deleteIsCheckData(id);
+    if (window.BRIDGE) {
+      window.BRIDGE.deleteIsCheckData(id);
+    }
+    setCountIsChecked(isChecked.length-1);
   };
 
   const onUpdateCIndex = (id) => {

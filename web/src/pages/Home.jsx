@@ -68,7 +68,6 @@ const Home = () => {
         title={`${pivotDate.getFullYear()}년 ${pivotDate.getMonth() + 1}월`}
         prev={<Button onClick={decreaseMonth} text={"<"} type= "PREV"/>}
         next={<Button onClick={increaseMonth} text={">"} type= "NEXT" />}
-        settings={<Button text={"settings"} type="SETTINGS" />}
       />
       <CategoryList 
       data = {categoryList}

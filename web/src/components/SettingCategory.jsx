@@ -31,7 +31,7 @@ const SettingCategory = () => {
         <div className='SettingCategory'>
             <SettingHeader 
                 name={"카테고리 설정"}
-                link={"/assets/dist/index.html/setting"} />
+                link={"/assets/dist/index.html/"} />
             
             <div className="setting_category_list_wrapper">
                 {categoryList.map((item) => (

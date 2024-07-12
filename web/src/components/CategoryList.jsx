@@ -1,5 +1,7 @@
 import '../css/CategoryList.css'
 import CategoryItem from './CategoryItem';
+import Button from "./Button";
+import {useNavigate} from 'react-router-dom';
 
 const CategoryList = ( {data, btnCategoryAdd}) => {
 
@@ -26,6 +28,11 @@ const CategoryList = ( {data, btnCategoryAdd}) => {
     }
   };
 
+  const navigate = useNavigate();
+  const onClickSetting = () => {
+    navigate('/assets/dist/index.html/settingCategory')
+  }
+
 
   return (
     <div className = "CategoryList">
@@ -34,6 +41,8 @@ const CategoryList = ( {data, btnCategoryAdd}) => {
           <CategoryItem key={item.id} {...item} />
         ))}
       </div>
+      <Button text={"settings"} type="SETTINGS" onClick={onClickSetting} />
+      
     </div>
   );
 };

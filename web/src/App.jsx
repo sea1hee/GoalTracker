@@ -53,6 +53,11 @@ export const GoalDispatchContext = createContext();
 
 function App() {
 
+
+  const [category, categoryDispatch] = useReducer(reducer_arr, mockDataCategory);
+  const [isChecked, isCheckedDispatch] = useReducer(reducer_arr, mockDataIsCheck);
+  const [cIndex, cIndexDispatch] = useReducer(reducer_int, 1);
+
   //category
   useEffect(() => {
     const loadCategoryFromAndroid = async (event) => {
@@ -85,7 +90,7 @@ function App() {
     return () => {
         window.removeEventListener('loadCategoryToWeb', loadCategoryFromAndroid);
     };
-}, []);
+}, [category]);
 
   //ischecked
   useEffect(() => {
@@ -113,14 +118,7 @@ function App() {
     return () => {
         window.removeEventListener('loadCheckListToWeb', loadChecklistFromAndroid);
     };
-  }, []);
-
-
-
-
-  const [category, categoryDispatch] = useReducer(reducer_arr, mockDataCategory);
-  const [isChecked, isCheckedDispatch] = useReducer(reducer_arr, mockDataIsCheck);
-  const [cIndex, cIndexDispatch] = useReducer(reducer_int, 1);
+  }, [isChecked]);
 
   const onCreateCategory = (name) => {
     

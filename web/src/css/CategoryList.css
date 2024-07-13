@@ -9,3 +9,15 @@
     margin : 10px 18px 20px 18px;
 }
 
+.button_setting {
+    background-color: white;
+    border: 0px;
+    box-shadow: none;
+  }
+  
+  .icon_setting{
+    width: 44px;
+    height: 32px;
+    background-color: white;
+  }
+  

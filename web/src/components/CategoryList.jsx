@@ -2,6 +2,7 @@ import '../css/CategoryList.css'
 import CategoryItem from './CategoryItem';
 import Button from "./Button";
 import {useNavigate} from 'react-router-dom';
+import setting from '../assets/setting.png';
 
 const CategoryList = ( {data, btnCategoryAdd}) => {
 
@@ -41,7 +42,9 @@ const CategoryList = ( {data, btnCategoryAdd}) => {
         {data.map((item, ind) => (
           <CategoryItem key={item.id} {...item} />
         ))}
-        <Button text={"settings"} type="SETTINGS" onClick={onClickSetting} />
+        <button onClick={onClickSetting} className='button_setting'>
+          <img src={setting} className='icon_setting'/>
+        </button>
       </div>
       
     </div>

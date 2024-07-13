@@ -5,6 +5,9 @@ import { useContext, useState } from "react";
 import { GoalStateContext, GoalDispatchContext } from "../App";
 import CategoryList from "../components/CategoryList";
 import AddCategoryModal from "../components/modal/AddCategoryModal";
+import icon_arrow_left from "../assets/icon_arrow_left.png"
+import icon_arrow_right from "../assets/icon_arrow_right.png"
+
 
 
 const Home = () => {
@@ -65,9 +68,13 @@ const Home = () => {
     <div>
       <AddCategoryModal className="modal" open={onModal} close={closeModal} />
       <HomeHeader
-        title={`${pivotDate.getFullYear()}년 ${pivotDate.getMonth() + 1}월`}
-        prev={<Button onClick={decreaseMonth} text={"<"} type= "PREV"/>}
-        next={<Button onClick={increaseMonth} text={">"} type= "NEXT" />}
+        title={`${pivotDate.getFullYear()}.${pivotDate.getMonth() + 1}`}
+        prev={<button onClick={decreaseMonth} className="button_arrow_left">
+                <img src={icon_arrow_left} width={20} className="icon_arrow_left"/>
+              </button>}
+        next={<button onClick={increaseMonth} className="button_arrow_right">
+                <img src={icon_arrow_right} width={20} className="icon_arrow_right"/>
+              </button>}
       />
       <CategoryList 
       data = {categoryList}

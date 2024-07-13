@@ -34,14 +34,15 @@ const CategoryList = ( {data, btnCategoryAdd}) => {
   }
 
 
+
   return (
     <div className = "CategoryList">
       <div className="category_list_wrapper">
-        {data.map((item) => (
+        {data.map((item, ind) => (
           <CategoryItem key={item.id} {...item} />
         ))}
+        <Button text={"settings"} type="SETTINGS" onClick={onClickSetting} />
       </div>
-      <Button text={"settings"} type="SETTINGS" onClick={onClickSetting} />
       
     </div>
   );

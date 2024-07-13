@@ -2,6 +2,8 @@ import "../css/Calendar.css";
 import { GoalStateContext } from "../App";
 import { GoalDispatchContext } from "../App";
 import { useContext } from "react";
+import check from '../assets/check.png';
+import nonchecked from '../assets/nonchecked.png';
 
 const render = () => {};
 
@@ -127,6 +129,7 @@ const Calendar = ({ date }) => {
               key={i}
               className="selected"
               onClick={() => onClickDateDelete(curCategoryIsCheckedList[exist].id)}
+              style={{backgroundImage: `url(${check})`}}
             >
               {day.getDate()}
             </div>
@@ -137,7 +140,8 @@ const Calendar = ({ date }) => {
           return (
             <div key={i}
             className="curMonthDate"
-            onClick={() => onClickDateCreate(day)}>
+            onClick={() => onClickDateCreate(day)}
+            style={{backgroundImage: `url(${nonchecked})`}}>
               {day.getDate()}
             </div>
           );

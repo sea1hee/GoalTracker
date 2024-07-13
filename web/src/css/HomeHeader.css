@@ -1,8 +1,15 @@
 .HomeHeader {
   display: flex;
-  padding: 10px;
   justify-content: space-between;
   align-items: center;
+  margin: 10px 0px 10px 18px;
+}
+
+.logo {
+  display: flex;
+  width: 100px;
+  text-align: left;
+  margin: 20px 18px 20px 18px;
 }
 
 .date {
@@ -10,10 +17,36 @@
 }
 
 .date .title {
-  padding: 0px 10px;
-  font-size: 20px;
+  padding: 0px 0px;
+  font-size: 24px;
+  font-weight: bold;
 
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.icon_arrow_left{
+  width: 28px;
+  height: 28px;
+  background-color: white;
+}
+
+.icon_arrow_right{
+  width: 28px;
+  height: 28px;
+  background-color: white;
+}
+
+.button_arrow_left{
+  background-color: white;
+  border: 0px;
+  box-shadow: none;
+}
+
+.button_arrow_right{
+  background-color: white;
+  border: 0px;
+  box-shadow: none;
+
 }

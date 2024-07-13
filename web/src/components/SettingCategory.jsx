@@ -30,7 +30,7 @@ const SettingCategory = () => {
         <AddCategoryModal className="modal" open={onModal} close={closeModal} />
         <div className='SettingCategory'>
             <SettingHeader 
-                name={"카테고리 설정"}
+                name={"습관 편집"}
                 link={"/assets/dist/index.html/"} />
             
             <div className="setting_category_list_wrapper">

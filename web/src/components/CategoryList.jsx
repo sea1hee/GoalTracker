@@ -1,10 +1,16 @@
 import '../css/CategoryList.css'
 import CategoryItem from './CategoryItem';
-import Button from "./Button";
 import {useNavigate} from 'react-router-dom';
 import setting from '../assets/setting.png';
+import { GoalDispatchContext } from "../App";
+import { useEffect } from 'react';
+import { useContext } from "react";
+
 
 const CategoryList = ( {data, btnCategoryAdd}) => {
+
+  window.BRIDGE.logAndroid("CategoryList" + data[0].id);
+  const {onUpdateCIndex} = useContext(GoalDispatchContext);
 
   const onWheel = (e) => {
     const { deltaY } = e;

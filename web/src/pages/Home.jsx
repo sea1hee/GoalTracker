@@ -77,7 +77,9 @@ const Home = () => {
               </button>}
       />
       <CategoryList 
-      data = {categoryList}
+      data = {categoryList.filter((category) => {
+        return category.visibility === true
+      })}
       btnCategoryAdd = {<Button onClick={addCategory} text={"add"} type= "ADDCATEGORY" />}/>
       <Calendar date={pivotDate}/>
     </div>

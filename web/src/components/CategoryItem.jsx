@@ -17,7 +17,6 @@ const CategoryItem = ({id, start_date, name}) => {
     const categoryOnClick = () => 
     {
         onUpdateCIndex(id);
-  
     }
 
     return (

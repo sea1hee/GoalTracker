@@ -1,4 +1,5 @@
 .SettingCategoryItem {
+    /*
     display: flex;
     padding: 10px;
     justify-content: space-between;
@@ -6,6 +7,33 @@
     border: 1px solid gainsboro;
     margin: 5px;
     width : 90%;
+*/
+    /* Frame 19 */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction:row;
+justify-content: space-between;
+align-items: center;
+padding: 14px 18px;
+gap: 6px;
+
+width: 339px;
+height: 56px;
+
+background: #FFFFFF;
+border: 1px solid #000000;
+border-radius: 100px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+margin :5px 0px 5px 0px;
 }
 
 .btn_group {
@@ -37,3 +65,20 @@
     background-color: yellow;
 }
 
+
+.button_visible{
+    background-color: white;
+    border: 0px;
+    box-shadow: none;
+}
+
+.icon_visible{
+    width: 25px;
+    height: 25px;
+    background-color: white;
+}
+.icon_invisible{
+    width: 25px;
+    height: 25px;
+    background-color: white;
+}

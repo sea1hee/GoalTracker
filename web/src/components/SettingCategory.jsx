@@ -4,6 +4,7 @@ import SettingCategoryItem from '../components/SettingCategoryItem';
 import AddCategoryModal from '../components/modal/AddCategoryModal'
 import { useContext, useState } from "react";
 import { GoalStateContext, GoalDispatchContext } from "../App";
+import addCategory from '../assets/addCategory.png';
 
 const SettingCategory = () => {
 
@@ -33,12 +34,24 @@ const SettingCategory = () => {
                 name={"습관 편집"}
                 link={"/assets/dist/index.html/"} />
             
-            <div className="setting_category_list_wrapper">
-                {categoryList.map((item) => (
-                    <SettingCategoryItem key={item.id} {...item} />
-                ))}
+            <div className="setting_category_list_wrapper_visible">
+                {categoryList.map((item) => {
+                    if(item.visibility){
+                    return <SettingCategoryItem key={item.id} {...item} />
+                    }
+                })}
             </div>
-            <div className="setting_btn_add_category" onClick={btnCategoryAdd}>Add</div>
+            <div className= "setting_category_list_wrapper_invisible">
+                {categoryList.map((item) => {
+                    if(!item.visibility){
+                    return <SettingCategoryItem key={item.id} {...item} />
+                    }
+                })}
+            </div>
+            <div className="SettingCategoryItem" onClick={btnCategoryAdd}>
+                <img src={addCategory} className='icon_addCategory' />
+                내 습관 추가하기
+            </div>
         </div>
     </div>
     );

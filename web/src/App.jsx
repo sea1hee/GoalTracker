@@ -9,7 +9,8 @@ import {Routes, Route} from 'react-router-dom';
 let mockDataCategory = [{
   id: 1,
   start_date : new Date("2024-02-25"),
-  name : "first"
+  name : "first",
+  visibility: true,
 }];
 let mockDataIsCheck = [];
 
@@ -69,7 +70,7 @@ function App() {
 
     const loadCategoryFromAndroid = async (event) => {
       var alterData = [];
-
+      var isUpdateIndex = false;
       for (var i = 0; i<event.detail.data.length ; i++){
 
         window.BRIDGE.logAndroid("raw: " +event.detail.data[i].start_date)
@@ -77,10 +78,18 @@ function App() {
           id : Number(event.detail.data[i].id),
           start_date : new Date(event.detail.data[i]?.start_date),
           name : event.detail.data[i].name,
+          visibility : Boolean(event.detail.data[i].visibility),
         }
-        
-        window.BRIDGE.logAndroid("trans: " +transData.start_date);
+      
+        window.BRIDGE.logAndroid("trans: " +transData.visibility);
         alterData.push(transData)
+        
+        if(!isUpdateIndex){
+          if(transData.visibility){
+            onUpdateCIndex(transData.id);
+            isUpdateIndex = true;
+          }
+        }
       }
       categoryDispatch({
         type: "ALTER",
@@ -93,6 +102,7 @@ function App() {
 
       window.BRIDGE.logAndroid("alterData: " +alterData);
     }
+
 
     window.addEventListener('loadCategoryToWeb', loadCategoryFromAndroid);
     
@@ -174,6 +184,20 @@ function App() {
     */
   };
 
+  const onUpdateCategoryName = (id, name) => {
+    if (window.BRIDGE){
+      window.BRIDGE.updateCategoryName(id, name);
+    }
+    setCountCategory(countCategory);
+  }
+
+  const onUpdateCategoryVisibility = (id, v) => {
+    if(window.BRIDGE){
+        window.BRIDGE.updateCategoryVisibility(id, v);
+    }
+    setCountCategory(countCategory+0.000001);
+  }
+
   const onCreateIsChecked = (categoryId, date) => {
     if (window.BRIDGE) {
       window.BRIDGE.addIsCheckData(dateToString(date), categoryId);
@@ -210,6 +234,8 @@ function App() {
             onDeleteCategory,
             onDeleteIsChecked,
             onUpdateCIndex,
+            onUpdateCategoryName,
+            onUpdateCategoryVisibility
           }}>
           <Routes>
             <Route path = "/assets/dist/index.html" exact element={<Home />}></Route>

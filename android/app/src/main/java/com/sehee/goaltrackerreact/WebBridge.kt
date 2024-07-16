@@ -88,6 +88,22 @@ class WebBridge(private val context: Context, private val webView: WebView) {
     }
 
     @JavascriptInterface
+    public fun updateCategoryName(id: Int, name: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            db.categoryDao().updateName(id, name);
+        }
+    }
+
+    @JavascriptInterface
+    public fun updateCategoryVisibility(id: Int, v: Boolean){
+        Log.d(javaClass.name, "updateCategoryVisibility")
+        CoroutineScope(Dispatchers.IO).launch {
+            db.categoryDao().updateVisibility(id, v);
+        }
+    }
+
+
+    @JavascriptInterface
     public fun loadCheckList(){
         var checkList: List<IsChecked>
         CoroutineScope(Dispatchers.Main).launch {
@@ -167,6 +183,7 @@ class WebBridge(private val context: Context, private val webView: WebView) {
             addedItem.put("id", list.get(i).id)
             addedItem.put("start_date", list.get(i).start_date)
             addedItem.put("name", list.get(i).name)
+            addedItem.put("visibility", list.get(i).visibility)
 
             returnJson.put(addedItem)
         }

@@ -9,5 +9,6 @@ data class Category (
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
     var start_date: String,
-    var name: String
+    var name: String,
+    var visibility: Boolean = true,
 )
